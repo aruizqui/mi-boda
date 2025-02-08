@@ -5,9 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Localización</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+    <!--Formato formularios-->
+
+    body, html{
+        height: 100%;
+        margin: 0;
+        font-family: Arial, Sans-serif
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 20px;
+    }
+    
+    form {
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;  
+    }
+    input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+    }
+    button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+    </style>
 </head>
+
 <body>
     <header>
+        <img src="images/LogoBoda.PNG" alt="LogoBoda" id="logo">
         <h1>Localización</h1>
         <nav>
             <ul>
@@ -21,9 +70,56 @@
 
     <main>
         <h2>Confirmación de Asistencia</h2>
-        <p>La boda se celebrará en <strong>[nombre del lugar]</strong>.</p>
-        <p>Dirección: <strong>[dirección aquí]</strong></p>
-        <iframe src="https://www.google.com/maps/embed?..."></iframe>
+        <form action="https://formspree.io/f/xzzdvkvz" method="POST" id="rsvp-form">
+            <label> ¿Asistirás a la boda? </label>
+            <select id="asistencia" name="asistencia" onchange="mostrarCampos()">
+                <option value="">Selecciona una opción</option>
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+            </select>
+
+            <!-- Campos que aparecen si responden SI-->
+             <div id="info-asistencia" style="display: none;">
+                <label>Nombre y Apellidos:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label> ¿Tienes alergias con algún alimento?</label>
+                <select id="alergias" name="alergias" onchange="mostrarAlergia()">
+                    <option value="">Selecciona una opción</option>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+                <!-- Campos que aparecen si hay alergias -->
+                <div id="detalle-alergia" style="display: none;">
+                    <label>Especifica tu alergia:</label>
+                    <input type="text" name="tipo-alergia">                
+                </div>
+             </div>
+
+             <button type="submit">Enviar Confirmación</button>
+        </form>
+
+        <script>
+        function mostrarCampos() {
+            let asistencia = document.getElementById("asistencia").value;
+            let infoAsistencia = document.getElementById("info-asistencia");
+
+            if (asistencia==="si") 
+            {infoAsistencia.style.display = "block";}
+            else
+            {infoAsistencia.style.display="none";}
+        }
+
+        function mostrarAlergia() {
+            let alergia = document.getElementById("alergias").value;
+            let detalleAlergia=document.getElementById("detalle-alergia");
+
+            if (alergia=== "si")
+            {detalleAlergia.style.display="block";}
+            else
+            {detalleAlergia.style.display = "none";}
+        }
+        </script>
     </main>
 </body>
 </html>

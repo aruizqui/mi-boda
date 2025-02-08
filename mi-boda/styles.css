@@ -1,13 +1,23 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background: color #f5f5f5;
+    background: color #9fb296;
     margin: 0;
     padding: 0;
 }
 
+#logo {
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    width: 120px;
+    height: auto;
+    display: block;
+    z-index: 100;
+}
+
 header {
-    background-color: #ffcccb;
+    background-color: #9fb296;
     padding: 20px;
 }
 
@@ -32,5 +42,5 @@ main {
 }
 
 h1, h2 {
-    color: #ff6f61;
+    color: #000000;
 }
