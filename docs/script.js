@@ -1,12 +1,25 @@
 document.addEventListener("DOMContentLoaded", function(){
     //Fecha Boda
-    const fechaBoda =  new Date("2026-04-11T12:00:00");
-    const hoy = new Date();
+    function actualizarContador(){
+        const fechaBoda = new Date("2026-04-11T12:00:00").getTime();
+        const ahora = new Date().getTime();
+        const diferencia = fechaBoda - ahora;
 
-    //Calcula la diferencia en dias
-    const diferenciaTiempo = fechaBoda -hoy;
-    const diasFaltan = Math.ceil(diferenciaTiempo/(1000*60*60*24));
-    
-    //Muestra el contador en la pagina
-    document.getElementById("contador").textContent = diasFaltan;
+        if (diferencia <= 0) {
+            document.getElementById("contador").innerHTML = "¡Es el gran día! 🎉";
+            return;
+        }
+
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+        document.getElementById("contador").innerHTML = 
+            `${dias} días, ${horas}h ${minutos}m ${segundos}s`;
+
+        setTimeout(actualizarContador, 1000);
+    }
+
+    actualizarContador();
 })

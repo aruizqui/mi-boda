@@ -8,15 +8,41 @@ body {
 
 #logo {
     position: absolute;
-    top: 25px;
-    left: 15px;
-    width: 120px;
+    top: 10px;
+    right: 15px;
+    width: 200px;
     height: auto;
     display: block;
     z-index: 100;
 }
 
+#fotonovios {
+    position: absolute;
+    width: 500px;
+    top: 350px;
+    left: 15 px;
+    height: auto;
+    display: block;
+    margin: 0 auto ;
+    max-width: 80%;
+}
+
+#names {
+    width: 400px;
+    height: auto;
+    display: block;
+    margin: 0 auto;}
+
+#logo, #names {
+    max-width: 80%; /* Reduce el tamaño en pantallas pequeñas */
+    height: auto;
+}
 header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Breathing;
+    text-align: center;
     background-color: #9fb296;
     padding: 20px;
 }
@@ -35,6 +61,11 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
     color: #333;
+    font-size: 20px;
+}
+
+nav ul li a.active {
+    border-bottom: 2px solid #000000; /* Subrayado solo en la página actual */
 }
 
 main {
@@ -42,5 +73,47 @@ main {
 }
 
 h1, h2 {
+    font-family: Breathing;
+    text-align: center;
     color: #000000;
+}
+
+#contador {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    width: auto;
+}
+
+main {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Hacer que la navegación sea más amigable en móviles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: block; /* En móviles, el menú será en columna */
+    margin: 10px 0;
+}
+
+/* Para pantallas grandes, el menú se muestra en línea */
+@media (min-width: 768px) {
+    nav ul li {
+        display: inline;
+        margin: 0 15px;
+    }
 }
